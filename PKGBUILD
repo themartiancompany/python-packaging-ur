@@ -3,8 +3,7 @@
 pkgbase=python-packaging
 pkgname=(python-packaging python2-packaging)
 _pkgname=packaging
-pkgver=16.0
-_commit=fd6c1d301a5162d4c78620444c55bd56aa2670a0
+pkgver=16.1
 pkgrel=1
 pkgdesc="Core utilities for Python packages"
 arch=('any')
@@ -12,7 +11,7 @@ url="https://github.com/pypa/packaging"
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-pyparsing' 'python2-pyparsing' 'git')
 checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-pretend' 'python2-pretend' 'python-coverage' 'python2-coverage')
-source=("git+https://github.com/pypa/packaging.git#commit=$_commit")
+source=("git+https://github.com/pypa/packaging.git#tag=$pkgver")
 md5sums=('SKIP')
 
 prepare() {
@@ -36,14 +35,14 @@ check() {
 }
 
 package_python-packaging() {
-  depends=('python-pyparsing')
+  depends=('python-pyparsing' 'python-six')
 
   cd "${srcdir}/${_pkgname}"
   python setup.py install --root "$pkgdir"
 }
 
 package_python2-packaging() {
-  depends=('python2-pyparsing')
+  depends=('python2-pyparsing' 'python2-six')
 
   cd "${srcdir}/${_pkgname}-py2"
   python2 setup.py install --root "$pkgdir"
