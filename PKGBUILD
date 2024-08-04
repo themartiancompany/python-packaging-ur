@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer: Truocolo <truocolo@aol.com>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-packaging
@@ -27,3 +31,4 @@ package() {
   cd packaging-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
